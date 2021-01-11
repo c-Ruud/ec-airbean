@@ -21,6 +21,6 @@ export default {
 
 <style lang="scss">
 .home {
-  background-color: rgb(56, 132, 109);
+  background-color: rgb(47, 41, 38);
 }
 </style>
