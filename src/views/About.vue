@@ -2,12 +2,12 @@
   <section class="about">
     <Header></Header>
     <h1 class="heading">Vårt kaffe</h1>
-    <p class="ingress">
+    <p class="ingressa">
       Pumpkin spice mug, barista cup, sit macchiato, kopi-luwak, doppio, grounds
       dripper, crema, strong whipped, variety extra iced id lungo half and half
       mazagran. Pumpkin spice.
     </p>
-    <p class="text">
+    <p class="textabout">
       Que dark fair trade, spoon decaffeinated, barista wings whipped, as rich
       aftertaste, con panna milk black, arabica white rich beans single shot
       extra affogato. So affogato macchiato sit extraction instant grinder
@@ -16,7 +16,7 @@
       cup kopi-luwak, fair trade flavour, frappuccino medium, café au lait
       flavour cultivar ut bar instant kopi-luwak.
     </p>
-    <p class="text">
+    <p class="textabout">
       Roast id macchiato, single shot siphon mazagran milk fair trade est aroma
       a half and half and, so, galão iced to go, whipped as cream cup pumpkin
       spice iced. At extra, rich grinder, brewed to go, steamed half and half
@@ -60,21 +60,22 @@ section {
   margin-left: 38px;
   margin-bottom: -0.1px;
 }
-.ingress {
+.ingressa {
   text-align: start;
   margin-left: 18px;
   margin-right: 8px;
   padding: 0 20px;
   font-weight: 700;
 }
-.text {
+.textabout {
   padding: 0 20px;
   font-weight: 500;
   text-align: start;
   margin-left: 18px;
   margin-right: 8px;
-  font-size: 0.87rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  font-family: "Work Sans", sans-serif;
 }
 .evapic {
   border-radius: 100% !important;

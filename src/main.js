@@ -9,6 +9,7 @@ new Vue({
   data() {
     return {
       menu: menuJSON.menu,
+      orderInfo: [],
     };
   },
   router,

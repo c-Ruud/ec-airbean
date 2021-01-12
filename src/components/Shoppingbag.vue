@@ -1,17 +1,24 @@
 <template>
   <div class="shopping">
     <a
+      v-on:click="$emit('showMyorder')"
       href="#"
       class="a-tag d-flex flex-column text-decoration-none align-items-center"
     >
       <img src="@/assets/graphics/bag.svg" alt="img" class="img" />
-      <div class="badge"></div>
+      <div class="badge">{{ cartnumber.length }}</div>
     </a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    cartnumber() {
+      return this.$root.orderInfo;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -21,7 +28,7 @@ export default {};
   width: 55px;
   height: 55px;
   position: absolute;
-  margin-top: -250px;
+  margin-top: -550px;
   margin-right: -280px;
 }
 .img {

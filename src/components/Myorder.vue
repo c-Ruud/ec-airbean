@@ -1,8 +1,11 @@
 <template>
-  <div class="myorder">
+  <div class="myorder" v-bind:class="{ visible: visible }">
     <div class="rubrik">Din beställning</div>
-    <OrderItems></OrderItems>
-    <select
+    <div>
+      {{}}
+    </div>
+    <!--<OrderItems></OrderItems>
+         <select
       name="amount"
       class="select-amount"
       v-model="myOrder.amount"
@@ -23,7 +26,7 @@
       <option value="13">13</option>
       <option value="14">14</option>
       <option value="15">15</option>
-    </select>
+    </select> -->
     <div class="ingress">Total</div>
     <div><!--Här skall uträkning finnas--></div>
     <div class="text">inkl moms + drönarleverans</div>
@@ -32,10 +35,14 @@
 </template>
 
 <script>
-import OrderItems from "../components/OrderItems.vue";
+//v-on:click="orderCompleted"
+//import OrderItems from "../components/OrderItems.vue";
 export default {
   components: {
-    OrderItems,
+    //  OrderItems,
+  },
+  props: {
+    visible: Boolean,
   },
 };
 </script>
@@ -43,6 +50,21 @@ export default {
 <style scoped>
 .myorder {
   background-color: white;
+  position: fixed;
+  /*height: 31rem;
+  width: 20rem; */
+  left: 25%;
+  bottom: 32%;
+  top: 12%;
+  right: 25%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 27px 18px rgba(0, 0, 0, 0.75);
+}
+.visible {
+  display: flex;
 }
 .rubrik {
   color: black;
@@ -61,6 +83,7 @@ export default {
   margin-right: 8px;
   padding: 0 20px;
   font-weight: 700;
+  align-self: flex-start;
 }
 .text {
   font-family: "PT Serif", serif;
@@ -70,13 +93,14 @@ export default {
   margin-left: 18px;
   margin-right: 8px;
   font-size: 0.6rem;
+  align-self: start;
+  margin-bottom: 30px;
 }
 .pay {
   color: rgb(255, 255, 255);
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
-  margin: 80px;
   border-radius: 20px;
   background-color: black;
   font-family: "PT Serif", serif;

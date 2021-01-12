@@ -6,8 +6,11 @@
       <span>Din beställning</span><br />
       <span>är på väg!</span>
     </div>
+    <!--Här skall eta kopplas från backend-->
     <div class="minu">13 minuter</div>
-    <a href="#" class="okcool">Ok, cool!</a>
+    <a href="#" class="okcool" v-on:click="$router.push({ path: '/home' })"
+      >Ok, cool!</a
+    >
   </section>
 </template>
 

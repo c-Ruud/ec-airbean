@@ -1,12 +1,15 @@
 <template>
-  <div class="item" v-on:click="$emit('click')">
-    <a href="#" class="add-tag">
-      <img src="@/assets/graphics/add.svg" alt="add" class="add" />
-    </a>
-    <p class="ingress">{{ menu.title }}</p>
-    <p class="dottedline">.............</p>
-    <p class="ingress">{{ menu.price }} kr</p>
-    <p class="text">{{ menu.desc }}</p>
+  <div class="item">
+    <!--v-on:click="$emit('click')" -->
+    <div class="items">
+      <a href="#" class="add-tag" v-on:click="$emit('addclicked')">
+        <img src="@/assets/graphics/add.svg" alt="add" class="add" />
+      </a>
+      <p class="ingress">{{ menu.title }}</p>
+      <p class="dottedline">.............</p>
+      <p class="ingress">{{ menu.price }} kr</p>
+    </div>
+    <p class="texten">{{ menu.desc }}</p>
   </div>
 </template>
 
@@ -22,6 +25,12 @@ export default {
 <style lang="scss">
 .item {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.items {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
@@ -29,17 +38,18 @@ export default {
 .ingress {
   font-family: "PT Serif", serif;
   text-align: start;
-  margin-left: 18px;
-  margin-right: 8px;
-  padding: 0 20px;
+  margin-left: 8px;
+  margin-right: 2px;
+  padding: 0 2px;
   font-weight: 700;
 }
-.text {
+.texten {
   font-family: "PT Serif", serif;
-  padding: 0 20px;
+  padding: 0 2px;
   font-weight: 500;
   text-align: start;
-  margin-left: 18px;
+  margin-top: -16px;
+  margin-left: 38px;
   margin-right: 8px;
   font-size: 0.6rem;
 }
@@ -49,5 +59,6 @@ export default {
   width: 15px;
   height: 15px;
   padding: 0.4rem;
+  margin-top: 14px;
 }
 </style>

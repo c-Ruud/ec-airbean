@@ -6,7 +6,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/menu">Menu</router-link> |
-      <!--<router-link to="/orderontheway">Orderontheway</router-link> |-->
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/orderontheway">Orderontheway</router-link> |
+      <router-link to="/myorderpage">Myorderpage</router-link> |
     </div>
   </div>
 </template>
@@ -25,6 +27,7 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
 button {
   &:hover {
     color: black;
@@ -32,7 +35,6 @@ button {
   }
 }
 a:-webkit-any-link {
-  color: -webkit-link;
   cursor: pointer;
   text-decoration: none;
 }

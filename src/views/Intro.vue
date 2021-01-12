@@ -3,7 +3,9 @@
     <aside class="left">
       <img src="@/assets/graphics/intro-graphic-left.svg" alt="aside-left" />
     </aside>
-    <img src="@/assets/graphics/airbean-landing.svg" class="logo" />
+    <a href="#" class="logo" v-on:click="$router.push({ path: '/home' })">
+      <img src="@/assets/graphics/airbean-landing.svg" class="logo" />
+    </a>
     <aside class="right">
       <img src="@/assets/graphics/intro-graphic-right.svg" alt="aside-right" />
     </aside>

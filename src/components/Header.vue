@@ -10,6 +10,7 @@
       <a
         href="#"
         class="a-tag d-flex flex-column text-decoration-none align-items-center"
+        v-on:click="$router.push({ path: '/home' })"
       >
         <img src="@/assets/graphics/navicon.svg" alt="img" class="img" />
       </a>

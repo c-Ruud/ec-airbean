@@ -1,10 +1,17 @@
 <template>
   <section class="menu">
     <Header></Header>
-    <Shoppingbag></Shoppingbag>
+    <Shoppingbag @showMyorder="showMyorder"></Shoppingbag>
+    <Myorder v-bind:visible="myorderVisible"></Myorder>
     <h1 class="heading">Meny</h1>
-    <MenuItem :menu="menu"></MenuItem>
-    <Footer></Footer>
+    <MenuItem
+      class="menuitem"
+      @addclicked="addclicked(item)"
+      :menu="item"
+      v-for="item in menu"
+      :key="item.id"
+    ></MenuItem>
+    <Footer class="fot"></Footer>
   </section>
 </template>
 
@@ -13,6 +20,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import MenuItem from "../components/MenuItem.vue";
 import Shoppingbag from "../components/Shoppingbag.vue";
+import Myorder from "../components/Myorder.vue";
 
 export default {
   name: "Menu",
@@ -21,11 +29,34 @@ export default {
     Footer,
     MenuItem,
     Shoppingbag,
+    Myorder,
   },
+  props: {},
   data() {
     return {
-      menu: {},
+      myorderVisible: false,
     };
+  },
+  methods: {
+    addclicked(wtf) {
+      const product = this.$root.orderInfo.find(
+        (product) => product.id == wtf.id
+      );
+      if (product) {
+        product.amount += 1;
+      } else {
+        const order = { ...wtf, amount: 1 };
+        this.$root.orderInfo.push(order);
+      }
+    },
+    showMyorder() {
+      this.myorderVisible = !this.myorderVisible;
+    },
+  },
+  computed: {
+    menu() {
+      return this.$root.menu;
+    },
   },
 };
 </script>
@@ -43,13 +74,25 @@ section {
   display: flex;
   margin-bottom: -0.1px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
+.menuitem {
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.fot {
+  margin-top: 30px;
+}
+/*
 .ingress {
   font-family: "PT Serif", serif;
   text-align: start;
-  margin-left: 18px;
-  margin-right: 8px;
-  padding: 0 20px;
+  margin-left: 2px;
+  margin-right: 2px;
+  //padding: 0 20px;
   font-weight: 700;
 }
 .line {
@@ -57,7 +100,7 @@ section {
 }
 .text {
   font-family: "PT Serif", serif;
-  padding: 0 20px;
+  //padding: 0 20px;
   font-weight: 500;
   text-align: start;
   margin-left: 18px;
@@ -76,5 +119,5 @@ section {
 }
 h3 {
   margin-bottom: 40px;
-}
+} */
 </style>

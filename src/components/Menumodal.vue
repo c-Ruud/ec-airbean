@@ -1,3 +1,4 @@
+<!-- denna är inte aktuell utan ligger på home som en vy-->
 <template>
   <div class="menu">
     <a href="#" class="a-tag">
