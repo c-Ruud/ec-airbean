@@ -1,11 +1,16 @@
 <template>
   <div class="myorder" v-bind:class="{ visible: visible }">
     <div class="rubrik">Din beställning</div>
-    <div>
-      {{}}
-    </div>
-    <!--<OrderItems></OrderItems>
-         <select
+    <!--     <div class="orderItems">
+      {{ orderItems }}
+    </div> -->
+    <OrderItems
+      class="orderItems"
+      v-bind:enrad="enrad"
+      :key="enrad.id"
+      v-for="enrad in orderItems"
+    ></OrderItems>
+    <!--   <select
       name="amount"
       class="select-amount"
       v-model="myOrder.amount"
@@ -36,13 +41,23 @@
 
 <script>
 //v-on:click="orderCompleted"
-//import OrderItems from "../components/OrderItems.vue";
+import OrderItems from "../components/OrderItems.vue";
 export default {
   components: {
-    //  OrderItems,
+    OrderItems,
+  },
+  data() {
+    return {
+      enrad: {},
+    };
   },
   props: {
     visible: Boolean,
+  },
+  computed: {
+    orderItems() {
+      return this.$root.orderInfo;
+    },
   },
 };
 </script>
@@ -106,5 +121,8 @@ export default {
   font-family: "PT Serif", serif;
   font-size: 1.2rem;
   font-weight: 700;
+}
+.orderItems {
+  padding: 2px;
 }
 </style>

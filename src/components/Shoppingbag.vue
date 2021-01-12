@@ -6,7 +6,7 @@
       class="a-tag d-flex flex-column text-decoration-none align-items-center"
     >
       <img src="@/assets/graphics/bag.svg" alt="img" class="img" />
-      <div class="badge">{{ cartnumber.length }}</div>
+      <section class="badge">{{ cartnumber.length }}</section>
     </a>
   </div>
 </template>
@@ -48,13 +48,14 @@ export default {
   border: 1px solid transparent;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.5;
-  height: 9px;
+  height: 10px;
   position: relative;
   margin-left: 40px;
-
+  text-align: start;
   margin-top: -2px;
   background-color: rgb(229, 103, 78);
+  color: white;
 }
 </style>
