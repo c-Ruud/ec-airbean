@@ -1,55 +1,38 @@
 <template>
   <div class="myorder" v-bind:class="{ visible: visible }">
     <div class="rubrik">Din beställning</div>
-    <!--     <div class="orderItems">
-      {{ orderItems }}
-    </div> -->
     <OrderItems
       class="orderItems"
+      v-for="enrad in orderItems"
       v-bind:enrad="enrad"
       :key="enrad.id"
-      v-for="enrad in orderItems"
+      @add="addtoOrder(enrad)"
+      @minus="deletefromOrder(enrad)"
+      @remove="removefromOrder(enrad)"
     ></OrderItems>
-    <!--   <select
-      name="amount"
-      class="select-amount"
-      v-model="myOrder.amount"
-      @change="$emit('newOrderEx', myOrder)"
-    >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="15">15</option>
-    </select> -->
-    <div class="ingress">Total</div>
-    <div><!--Här skall uträkning finnas--></div>
+    <div class="total">
+      <div class="ingress">
+        Total: .................. <span>{{ $root.total }} kr</span>
+      </div>
+    </div>
     <div class="text">inkl moms + drönarleverans</div>
-    <a href="#" class="pay">Take my money!</a>
+
+    <router-link to="/orderontheway"
+      ><a href="#" class="pay" v-on:click="$emit('getData')"
+        >Take my money!</a
+      ></router-link
+    >
   </div>
 </template>
 
 <script>
-//v-on:click="orderCompleted"
 import OrderItems from "../components/OrderItems.vue";
 export default {
   components: {
     OrderItems,
   },
   data() {
-    return {
-      enrad: {},
-    };
+    return {};
   },
   props: {
     visible: Boolean,
@@ -59,19 +42,45 @@ export default {
       return this.$root.orderInfo;
     },
   },
+  methods: {
+    addtoOrder(kaffet) {
+      let kaffetillorder = this.orderItems.find(
+        (kaffetillorder) => kaffetillorder.id === kaffet.id
+      );
+      kaffetillorder.amount++;
+      this.$root.total = this.$root.total + kaffet.price;
+    },
+    deletefromOrder(kaffet) {
+      let kaffetillorder = this.orderItems.find(
+        (kaffetillorder) => kaffetillorder.id === kaffet.id
+      );
+      if (kaffetillorder.amount >= 1) {
+        kaffetillorder.amount--;
+        this.$root.total = this.$root.total - kaffet.price;
+      } else {
+        kaffetillorder.amount = 0;
+      }
+    },
+    removefromOrder(kaffet) {
+      this.$root.orderInfo.splice(kaffet, 1);
+      /*this.$root.orderInfo.reduce((acc, kaffet) => acc + kaffet.price, 0);
+      this.$root.total = this.$root.total * 0; MÅÅÅSTE få bort siffrorna
+       this.$root.total.splice(kaffet, 1); DETTA ÄR FEEEL*/
+    },
+  },
 };
 </script>
 
 <style scoped>
 .myorder {
   background-color: white;
-  position: fixed;
-  /*height: 31rem;
-  width: 20rem; */
-  left: 25%;
+  position: absolute;
+  height: 31rem;
+  width: 20rem;
+  /* left: 25%;
   bottom: 32%;
   top: 12%;
-  right: 25%;
+  right: 25%; */
   display: none;
   align-items: center;
   justify-content: center;
@@ -98,14 +107,15 @@ export default {
   margin-right: 8px;
   padding: 0 20px;
   font-weight: 700;
-  align-self: flex-start;
+  align-self: start;
+  margin-top: 20px;
 }
 .text {
   font-family: "PT Serif", serif;
   padding: 0 20px;
   font-weight: 500;
   text-align: start;
-  margin-left: 18px;
+  margin-left: 40px;
   margin-right: 8px;
   font-size: 0.6rem;
   align-self: start;
@@ -124,5 +134,14 @@ export default {
 }
 .orderItems {
   padding: 2px;
+  display: flex;
+  align-self: start;
+  margin-left: 30px;
+}
+.total {
+  display: flex;
+  flex-direction: row;
+  align-self: start;
+  margin-left: 18px;
 }
 </style>

@@ -10,6 +10,7 @@ new Vue({
     return {
       menu: menuJSON.menu,
       orderInfo: [],
+      total: 0,
     };
   },
   router,

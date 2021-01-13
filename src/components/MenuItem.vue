@@ -1,12 +1,11 @@
 <template>
   <div class="item">
-    <!--v-on:click="$emit('click')" -->
     <div class="items">
       <a href="#" class="add-tag" v-on:click="$emit('addclicked')">
         <img src="@/assets/graphics/add.svg" alt="add" class="add" />
       </a>
       <p class="ingress">{{ menu.title }}</p>
-      <p class="dottedline">.............</p>
+      <p class="dottedline">....................</p>
       <p class="ingress">{{ menu.price }} kr</p>
     </div>
     <p class="texten">{{ menu.desc }}</p>

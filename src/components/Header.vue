@@ -1,11 +1,7 @@
 <template>
   <header>
     <img src="@/assets/graphics/graphics-header.svg" alt="header" />
-    <!--
-    <button class="meny">
-      <img src="@/assets/graphics/navicon.svg" alt="img" class="img" />
-    </button>
-    -->
+
     <div class="hamburgermenu">
       <a
         href="#"

@@ -6,7 +6,7 @@ import Intro from "../views/Intro.vue";
 import Menu from "../views/Menu.vue";
 import Profile from "../views/Profile.vue";
 import Orderontheway from "../views/Orderontheway.vue";
-import Myorderpage from "../views/Myorderpage.vue";
+//import Myorderpage from "../views/Myorderpage.vue";
 import About from "../views/About.vue";
 
 Vue.use(VueRouter);
@@ -37,11 +37,11 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
-  {
+  /*   {
     path: "/myorderpage",
     name: "Myorderpage",
     component: Myorderpage,
-  },
+  }, */
   {
     path: "/about",
     name: "About",

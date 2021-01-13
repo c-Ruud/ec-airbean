@@ -3,9 +3,9 @@
     <Header></Header>
     <Shoppingbag @showMyorder="showMyorder"></Shoppingbag>
     <Myorder v-bind:visible="myorderVisible"></Myorder>
-    <h1 class="heading">Meny</h1>
+    <h1 class="headingem">Meny</h1>
     <MenuItem
-      class="menuitem"
+      class="menuitemem"
       @addclicked="addclicked(item)"
       :menu="item"
       v-for="item in menu"
@@ -38,15 +38,20 @@ export default {
     };
   },
   methods: {
-    addclicked(wtf) {
-      const product = this.$root.orderInfo.find(
-        (product) => product.id == wtf.id
+    addclicked(kaffet) {
+      let kaffetillorder = this.menu.find(
+        (kaffetillorder) => kaffetillorder.id === kaffet.id
       );
-      if (product) {
-        product.amount += 1;
+
+      let amount = { amount: "" };
+      let cartItem = { ...kaffetillorder, ...amount };
+      console.log(cartItem);
+      if (this.orderItems.find((element) => element.id === cartItem.id)) {
+        cartItem.amount += 1;
       } else {
-        const order = { ...wtf, amount: 1 };
-        this.$root.orderInfo.push(order);
+        this.$root.total = this.$root.total + cartItem.price;
+        this.$root.orderInfo.push(cartItem);
+        cartItem.amount++;
       }
     },
     showMyorder() {
@@ -56,6 +61,9 @@ export default {
   computed: {
     menu() {
       return this.$root.menu;
+    },
+    orderItems() {
+      return this.$root.orderInfo;
     },
   },
 };
@@ -68,20 +76,22 @@ section {
   justify-content: center;
   align-items: center;
 }
-.heading {
+.headingem {
   font-family: "PT Serif", serif;
   font-size: 3.4rem;
   display: flex;
   margin-bottom: -0.1px;
   text-align: center;
   justify-content: center;
-  align-items: center;
+  align-self: center;
   margin-top: 20px;
 }
-.menuitem {
+.menuitemem {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-self: start;
+  margin-left: 40px;
 }
 .fot {
   margin-top: 30px;
