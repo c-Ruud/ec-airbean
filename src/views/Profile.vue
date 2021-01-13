@@ -2,28 +2,29 @@
   <section class="home">
     <Header></Header>
     <Createprofile></Createprofile>
+    <div class="empty"></div>
     <!--<div v-if="loading">
       <img src="@/assets/graphics/loader.png" />
     </div>
      <div v-else> 
     <div v-for="user in users" v-bind:key="user.name">{{ user.name }}</div>
-    --><!--<Footer></Footer>-->
+    -->
+    <Footer></Footer>
   </section>
 </template>
 
 <script>
-// @ is an alias to /src
 //import * as API from "@/api";
 import Header from "../components/Header.vue";
 import Createprofile from "../components/Createprofile.vue";
-//import Footer from "../components/Footer.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Home",
   components: {
     Header,
     Createprofile,
-    //Footer,
+    Footer,
   },
   /* data() {
     return {
@@ -43,5 +44,8 @@ export default {
 <style lang="scss">
 .home {
   background-color: rgb(47, 41, 38);
+}
+.empty {
+  height: 20rem;
 }
 </style>

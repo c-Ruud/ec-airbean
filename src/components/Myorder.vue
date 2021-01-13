@@ -63,9 +63,7 @@ export default {
     },
     removefromOrder(kaffet) {
       this.$root.orderInfo.splice(kaffet, 1);
-      /*this.$root.orderInfo.reduce((acc, kaffet) => acc + kaffet.price, 0);
-      this.$root.total = this.$root.total * 0; MÅÅÅSTE få bort siffrorna
-       this.$root.total.splice(kaffet, 1); DETTA ÄR FEEEL*/
+      this.$root.total = this.$root.total - kaffet.price * kaffet.amount;
     },
   },
 };

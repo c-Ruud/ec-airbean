@@ -27,21 +27,13 @@ export default {};
 <style scoped>
 .login {
   background-color: rgb(243, 228, 225);
-  /*display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  margin-top: 400px;
+  margin-top: 40px;
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 30px;
-  position: absolute;
+  position: fixed;
   height: 20rem;
   width: 20rem;
-  /* left: 25%;
-  bottom: 32%;
-  top: 12%;
-  right: 25%; */
   display: flex;
   align-items: center;
   justify-content: center;
