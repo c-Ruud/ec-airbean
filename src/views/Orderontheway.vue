@@ -10,7 +10,7 @@
 
     <Loading v-model="loading" v-if="loading"></Loading>
     <div class="minu">{{ eta }} minuter</div>
-    <a href="#" class="okcool" v-on:click="getData">Ge mig Min Data</a>
+    <!--<a href="#" class="okcool" v-on:click="getData">Ge mig Min Data</a>-->
     <a href="#" class="okcool" v-on:click="$router.push({ path: '/home' })"
       >Ok, cool!</a
     >
@@ -37,6 +37,7 @@ export default {
     },
   },
   async mounted() {
+    this.getData();
     this.loading = false;
   },
 };
