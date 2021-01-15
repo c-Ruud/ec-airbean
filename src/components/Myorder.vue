@@ -61,8 +61,12 @@ export default {
         kaffetillorder.amount = 0;
       }
     },
-    removefromOrder(kaffet) {
+/*     removefromOrder(kaffet) {
       this.$root.orderInfo.splice(kaffet, 1);
+      this.$root.total = this.$root.total - kaffet.price * kaffet.amount;
+    }, */
+    removefromOrder(kaffet) {
+      this.$root.orderInfo = this.$root.orderInfo.filter(kaffetillorder => kaffetillorder.id != kaffet.id);
       this.$root.total = this.$root.total - kaffet.price * kaffet.amount;
     },
   },
