@@ -12,7 +12,7 @@
     ></OrderItems>
     <div class="total">
       <div class="ingress">
-        Total: .................. <span>{{ $root.total  /* total*/ }} kr</span>
+        Total: .................. <span>{{ $root.total }} kr</span>
       </div>
     </div>
     <div class="text">inkl moms + drönarleverans</div>
@@ -41,9 +41,6 @@ export default {
     orderItems() {
       return this.$root.orderInfo;
     },
-/*     total() {
-      return this.$root.orderInfo.reduce((acc, kaffet) => acc + kaffet.price, 0);
-    }, */
   },
   methods: {
     addtoOrder(kaffet) {
@@ -70,7 +67,7 @@ export default {
     }, */
     removefromOrder(kaffet) {
       this.$root.orderInfo = this.$root.orderInfo.filter(kaffetillorder => kaffetillorder.id != kaffet.id);
-      this.$root.total = this.$root.total - kaffet.price * kaffet.amount;
+      this.$root.total = this.$root.total - kaffet.price * kaffet.amount; 
     },
   },
 };
